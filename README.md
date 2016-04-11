@@ -23,6 +23,7 @@ The ```meteor build``` command often requires several minutes to perform its tas
   docker push namespace/mymeteorapp
   ```
 4. Create a [Dockerfile](Dockerfile) used for deployment. It should include the following statements:
+
   ```
   FROM namespace/mymeteorapp
   CMD node main.js
