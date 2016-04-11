@@ -1,4 +1,3 @@
 FROM healthcareblocks/meteordemo
-EXPOSE 80
-EXPOSE 443
+ADD nginx.conf.sigil /
 CMD node main.js

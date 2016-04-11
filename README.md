@@ -28,14 +28,21 @@ docker push namespace/mymeteorapp
 4. Create a [Dockerfile](Dockerfile) used for deployment. It should include the following statements:
 ```
 FROM namespace/mymeteorapp
-EXPOSE 5000
-ENV PORT 5000
 CMD node main.js
 ```
 
 Now you can ```git push dokku master``` your app.
 
 The first time you deploy, Dokku will pull down the base image represented in Dockerfile.build. But once this image is cached on the server, subsequent deploys will be a bit faster.
+
+## SSL Configuration
+
+Dokku has some limitations around SSL, Dockerfiles, and exposed ports - [see here](https://github.com/dokku/dokku/issues/2078). To use SSL in your application, just add a copy of [nginx.conf.sigil](nginx.conf.sigil) to the root of your application source and in your Dockerfile, add this line:
+```
+ADD nginx.conf.sigil /
+```
+
+Be sure you upload an SSL certificate as described in the [documentation](http://dokku.viewdocs.io/dokku~v0.5.4/deployment/ssl-configuration/).
 
 ## Public vs. Private Docker Images
 
