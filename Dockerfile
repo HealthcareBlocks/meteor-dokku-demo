@@ -1,4 +1,4 @@
 FROM healthcareblocks/meteordemo
-EXPOSE 5000
+EXPOSE 80 443
 ENV PORT 5000
 CMD node main.js
