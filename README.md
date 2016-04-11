@@ -36,7 +36,7 @@ The first time you deploy, Dokku will pull down the base image represented in Do
 
 Dokku has some limitations around SSL, Dockerfiles, and exposed ports - [see here](https://github.com/dokku/dokku/issues/2078). To use SSL in your application, just add a copy of [nginx.conf.sigil](nginx.conf.sigil) to the root of your application source and in your Dockerfile, add this line:
 ```
-ADD nginx.conf.sigil /
+ADD nginx.conf.sigil /app/
 ```
 
 Be sure you upload an SSL certificate as described in the [documentation](http://dokku.viewdocs.io/dokku~v0.5.4/deployment/ssl-configuration/).
