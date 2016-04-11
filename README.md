@@ -20,7 +20,12 @@ The ```meteor build``` command often requires several minutes to perform its tas
 docker build -t namespace/mymeteorapp -f Dockerfile.build .
 ```
 
-3. Create a [Dockerfile](Dockerfile) used for deployment. It should include the following statements:
+3. Push image to Docker Hub (or another registry):
+```
+docker push namespace/mymeteorapp
+```
+
+4. Create a [Dockerfile](Dockerfile) used for deployment. It should include the following statements:
 ```
 FROM namespace/mymeteorapp
 EXPOSE 5000
@@ -28,12 +33,10 @@ ENV PORT 5000
 CMD node main.js
 ```
 
-4. ```docker push``` the above images to Docker Hub or similar.
-
 Now you can ```git push dokku master``` your app.
 
-The first time you deploy, Dokku will pull down the base image represented in Dockerfile.build. But once this image is cached on the server, subsequent deploys will be a bit faster. 
+The first time you deploy, Dokku will pull down the base image represented in Dockerfile.build. But once this image is cached on the server, subsequent deploys will be a bit faster.
 
 ## Public vs. Private Docker Images
 
-If your Docker Hub images are stored as "private," you'll need to run ```docker login``` on your Dokku host before deploying for the first time.
+If your Docker Hub application image is stored as "private," you'll need to run ```docker login``` on your Dokku host before deploying for the first time.
