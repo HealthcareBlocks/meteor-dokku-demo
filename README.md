@@ -14,17 +14,14 @@ The ```meteor build``` command often requires several minutes to perform its tas
 ## Instructions
 
 1. Create a [Dockerfile.build](Dockerfile.build) - this can be any Meteor base image that works for your own use case.
-
 2. Build your image:
 ```
 docker build -t namespace/mymeteorapp -f Dockerfile.build .
 ```
-
 3. Push image to Docker Hub (or another registry):
 ```
 docker push namespace/mymeteorapp
 ```
-
 4. Create a [Dockerfile](Dockerfile) used for deployment. It should include the following statements:
 ```
 FROM namespace/mymeteorapp
