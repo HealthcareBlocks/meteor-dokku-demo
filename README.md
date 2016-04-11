@@ -32,6 +32,8 @@ CMD node main.js
 
 Now you can ```git push dokku master``` your app.
 
+The first time you deploy, Dokku will pull down the base image represented in Dockerfile.build. But once this image is cached on the server, subsequent deploys will be a bit faster. 
+
 ## Public vs. Private Docker Images
 
 If your Docker Hub images are stored as "private," you'll need to run ```docker login``` on your Dokku host before deploying for the first time.
